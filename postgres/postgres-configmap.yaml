@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: freightdb
+  POSTGRES_USER: freightuser
+  POSTGRES_PASSWORD: freightuser
