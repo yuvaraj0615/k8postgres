@@ -1,53 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fr8taxapi
+  name: fr8web
   labels:
-    app: fr8-taxapi
+    app: fr8-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: fr8taxapi
+      service: fr8web
   template:
     metadata:
       labels:
-        app: fr8-taxapi
-        service: fr8taxapi
+        app: fr8-web
+        service: fr8web
     spec:
       containers:
-        - name: fr8taxapi
-          image: yuvak7/fr8taxapi:v1
+        - name: fr8web
+          image: yuvak7/fr8web:v1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: taxapi-config
+                name: fr8web-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fr8taxapi
+  name: fr8web
   labels:
-    app: fr8-taxapi
-    service: fr8taxapi
+    app: fr8-web
+    service: fr8web
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080
+    - port: 7070
       targetPort: 80
       protocol: TCP
   selector:
-    service: fr8taxapi
+    service: fr8web
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: taxapi-config
+  name: fr8web-config
   labels:
-    app: fr8taxapi
+    app: fr8web
 data:
   ASPNETCORE_URLS: http://+:80
-  DB_CONNECTION_STRING: Server=postgres;port=5432;user id=postgresadmin;password=admin123;database=postgresdb;pooling=true
+  CustomerApiBaseAddress: http://fr8customerapi:9090/
