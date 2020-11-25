@@ -50,4 +50,4 @@ metadata:
     app: fr8web
 data:
   ASPNETCORE_URLS: http://+:80
-  CustomerApiBaseAddress: http://fr8customerapi:9090/
+  CustomerApiBaseAddress: http://fr8customerapi/

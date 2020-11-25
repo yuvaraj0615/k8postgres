@@ -36,7 +36,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 9090
+    - port: 80
       targetPort: 80
       protocol: TCP
   selector:
@@ -51,4 +51,4 @@ metadata:
 data:
   ASPNETCORE_URLS: http://+:80
   CustomerDbConnectionUrl: Server=postgres;port=5432;user id=postgresadmin;password=admin123;database=postgresdb;pooling=true
-  TaxApiBaseAddress: http://fr8taxapi:8080/
+  TaxApiBaseAddress: http://fr8taxapi/
