@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fr8customerapi
-          image: yuvak7/fr8customerapi:v1
+          image: yuvak7/fr8customerapi:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fr8web
-          image: yuvak7/fr8web:v1
+          image: yuvak7/fr8web:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

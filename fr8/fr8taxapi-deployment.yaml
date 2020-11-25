@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fr8taxapi
-          image: yuvak7/fr8taxapi:v1
+          image: yuvak7/fr8taxapi:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
