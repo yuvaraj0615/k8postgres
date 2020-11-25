@@ -13,13 +13,13 @@ spec:
       paths:
       - backend:
           serviceName: fr8taxapi
-          servicePort: 8080
+          servicePort: 80
         path: /taxapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
-          servicePort: 8090
+          servicePort: 80
         path: /customerapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
-          servicePort: 8080
+          servicePort: 80
         path: /(.*)
