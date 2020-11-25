@@ -13,30 +13,13 @@ spec:
       paths:
       - backend:
           serviceName: fr8taxapi
-          servicePort: 80
-        path: /taxapi
+          servicePort: 8080
+        path: /taxapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
-          servicePort: 80
-        path: /customerapi
+          servicePort: 8090
+        path: /customerapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
-          servicePort: 80
+          servicePort: 8080
         path: /(.*)
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: fr8-ingress-static
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /static/$2
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: fr8customerapi
-          servicePort: 80
-        path: /static(/|$)(.*)
