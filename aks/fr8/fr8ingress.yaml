@@ -14,11 +14,11 @@ spec:
       - backend:
           serviceName: fr8taxapi
           servicePort: 80
-        path: /fr8taxapi(/|$)(.*)
+        path: /taxapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
           servicePort: 80
-        path: /fr8customerapi(/|$)(.*)
+        path: /customerapi(/|$)(.*)
       - backend:
           serviceName: fr8customerapi
           servicePort: 80
