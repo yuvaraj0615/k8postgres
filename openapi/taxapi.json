@@ -1,0 +1,159 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Tax API",
+    "description": "Tax api to get state tax details",
+    "termsOfService": "https://example.com/terms",
+    "contact": {
+      "name": "Yuvaraj Kesavan",
+      "email": "yuvaraj.kesavan@cognizant.com"
+    },
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://10.240.0.42"
+    }
+  ],
+  "paths": {
+    "/api/Taxes": {
+      "get": {
+        "tags": [
+          "Taxes"
+        ],
+        "summary": "Get Taxes",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tax"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Taxes/{state}": {
+      "get": {
+        "tags": [
+          "Taxes"
+        ],
+        "summary": "Get Tax by state",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "path",
+            "description": "State acronym",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "State acronym",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tax"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tax": {
+        "type": "object",
+        "properties": {
+          "stateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stateName": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

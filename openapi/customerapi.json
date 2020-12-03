@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Customer Quote API",
+    "description": "Customer api to get customer quote details",
+    "termsOfService": "https://example.com/terms",
+    "contact": {
+      "name": "Yuvaraj Kesavan",
+      "email": "yuvaraj.kesavan@cognizant.com"
+    },
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://10.240.0.42"
+    }
+  ],
+  "paths": {
+    "/api/Customers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Get Customer freight quote information",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerFreightDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Customers/{customerName}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Get customer freight quote information by customer name",
+        "parameters": [
+          {
+            "name": "customerName",
+            "in": "path",
+            "description": "Customer Name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Customer Name",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CustomerFreightDto": {
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "carrierName": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadWeight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromState": {
+            "type": "string",
+            "nullable": true
+          },
+          "toState": {
+            "type": "string",
+            "nullable": true
+          },
+          "chargeAmount": {
+            "type": "number",
+            "format": "currency"
+          },
+          "taxPersent": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "currency"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "carrierName": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadWeight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromState": {
+            "type": "string",
+            "nullable": true
+          },
+          "toState": {
+            "type": "string",
+            "nullable": true
+          },
+          "chargeAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
