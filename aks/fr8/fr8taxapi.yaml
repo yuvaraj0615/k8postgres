@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fr8taxapi
-          image: yuvak7/fr8taxapi:v2
+          image: fr8imgrepo.azurecr.io/fr8taxapi:v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -48,4 +48,8 @@ metadata:
     app: fr8taxapi
 data:
   ASPNETCORE_URLS: http://+:80
-  DB_CONNECTION_STRING: Server=postgres;port=5432;user id=postgresadmin;password=admin123;database=postgresdb;pooling=true
+  DBServer: pgserv.postgres.database.azure.com
+  DBUser: fr8admin@pgserv
+  DBPassword: P@ssword1
+  Database: postgresdb 
+

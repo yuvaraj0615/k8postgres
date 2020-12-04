@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fr8web
-          image: yuvak7/fr8web:v2
+          image: fr8imgrepo.azurecr.io/fr8web:v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -36,8 +36,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 7070
-      targetPort: 80
+    - port: 80
       protocol: TCP
   selector:
     service: fr8web
